@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/sverdejot/greeter/internal/application"
+	"github.com/sverdejot/greeter/greeter/internal/application"
 )
 
 func NewGreeterHandler(greeter *application.Greeter) http.HandlerFunc {
@@ -24,8 +24,8 @@ func NewGreeterHandler(greeter *application.Greeter) http.HandlerFunc {
 			return
 		}
 
-		body := struct{
-			Message	string `json:"message"`
+		body := struct {
+			Message string `json:"message"`
 		}{
 			Message: msg,
 		}

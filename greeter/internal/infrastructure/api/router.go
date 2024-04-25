@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/sverdejot/greeter/internal/application"
+	"github.com/sverdejot/greeter/greeter/internal/application"
 )
 
 func AddRoutes() http.Handler {

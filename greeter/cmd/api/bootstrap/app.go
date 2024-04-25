@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/sverdejot/greeter/internal/infrastructure/api"
+	"github.com/sverdejot/greeter/greeter/internal/infrastructure/api"
 )
 
 func Run() {
@@ -14,10 +14,10 @@ func Run() {
 	server := http.Server{
 		Addr: ":8080",
 
-		IdleTimeout: 30 * time.Second,
-		WriteTimeout: 10 * time.Second,
+		IdleTimeout:       30 * time.Second,
+		WriteTimeout:      10 * time.Second,
 		ReadHeaderTimeout: 2 * time.Second,
-		ReadTimeout: 10 * time.Second,
+		ReadTimeout:       10 * time.Second,
 
 		Handler: handler,
 	}
