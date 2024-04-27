@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "github.com/sverdejot/greeter/users/gen/go/user/v1";
+
+import "proto/user/v1/user.proto";
+
+service UserService {
+	rpc GetUserName(GetUserNameRequest) returns (GetUserNameResponse) {};
+}
+
+message GetUserNameRequest {
+	int32 id = 1;
+}
+
+message GetUserNameResponse {
+	User user = 1;
+}

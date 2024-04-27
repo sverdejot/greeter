@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "github.com/sverdejot/greeter/users/gen/go/user/v1";
+
+message User {
+  string name = 1;
+}
