@@ -1,0 +1,10 @@
+services:
+  greeter:
+    build:
+      context: greeter
+    ports:
+      - 8080:8080
+
+  users:
+    build:
+      context: users
