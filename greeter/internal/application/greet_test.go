@@ -7,6 +7,15 @@ import (
 	"github.com/sverdejot/greeter/greeter/internal/application"
 )
 
+type StubUsersRepository struct {
+	Users map[int]string
+}
+
+func (s *StubUsersRepository) GetUserName(id int) (string, bool) {
+	name, ok := s.Users[id]
+	return name, ok
+}
+
 func TestGreeter(t *testing.T) {
 	// given
 	cases := map[string]struct {
@@ -22,7 +31,8 @@ func TestGreeter(t *testing.T) {
 	for name, test_case := range cases {
 		t.Run(name, func(t *testing.T) {
 			// given
-			uc := application.NewGreeter(test_case.users)
+			repo := &StubUsersRepository{test_case.users}
+			uc := application.NewGreeter(repo)
 
 			// when
 			msg, err := uc.Greet(test_case.got)
