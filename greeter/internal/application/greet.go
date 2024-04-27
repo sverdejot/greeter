@@ -6,7 +6,6 @@ import (
 	"github.com/sverdejot/greeter/greeter/internal/domain/users"
 )
 
-
 type Greeter struct {
 	repo users.UsersRepository
 }

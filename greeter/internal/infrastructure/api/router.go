@@ -4,17 +4,12 @@ import (
 	"net/http"
 
 	"github.com/sverdejot/greeter/greeter/internal/application"
-	services "github.com/sverdejot/greeter/greeter/internal/infrastructure/http"
 )
 
-func AddRoutes() http.Handler {
+func AddRoutes(app *application.App) http.Handler {
 	mux := http.NewServeMux()
 
-
-	us := services.NewUserService()
-
-	uc := application.NewGreeter(us)
-	greeterHandler := NewGreeterHandler(uc)
+	greeterHandler := NewGreeterHandler(app.Greeter)
 
 	mux.HandleFunc("GET /hello/{id}", greeterHandler)
 

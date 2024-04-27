@@ -5,11 +5,20 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/sverdejot/greeter/greeter/internal/application"
 	"github.com/sverdejot/greeter/greeter/internal/infrastructure/api"
+	grpcclient "github.com/sverdejot/greeter/greeter/internal/infrastructure/grpc"
 )
 
 func Run() {
-	handler := api.AddRoutes()
+	us, _, err := grpcclient.NewGrpcUserService()
+	if err != nil {
+		log.Fatalf("cannot instantaite grpc service: %v", err)
+	}
+
+	app := application.NewApp(us)
+
+	handler := api.AddRoutes(app)
 
 	server := http.Server{
 		Addr: ":8080",

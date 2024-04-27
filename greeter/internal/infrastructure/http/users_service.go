@@ -26,7 +26,7 @@ func (s *UserService) GetUserName(id int) (string, bool) {
 		return "", false
 	}
 
-	body := &struct{
+	body := &struct {
 		Name string `json:"name"`
 	}{}
 
