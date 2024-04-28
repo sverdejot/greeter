@@ -1,7 +1,15 @@
 package main
 
-import "github.com/sverdejot/greeter/users/cmd/api/bootstrap"
+import (
+	"log"
+
+	"github.com/sverdejot/greeter/users/cmd/api/bootstrap"
+)
 
 func main() {
-	bootstrap.Run()
+	errCh := bootstrap.Run()
+
+	for err := range errCh {
+		log.Printf("something happened: %v", err)
+	}
 }
